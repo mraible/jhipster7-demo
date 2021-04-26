@@ -95,7 +95,7 @@ describe('Blog e2e test', () => {
       .invoke('val')
       .should('match', new RegExp('Forward value-added'));
 
-    cy.setFieldSelectToLastOfEntity('user');
+    cy.get('[data-cy="user"]').select('admin');
 
     cy.get(entityCreateSaveButtonSelector).click({ force: true });
     cy.scrollTo('top', { ensureScrollable: false });
