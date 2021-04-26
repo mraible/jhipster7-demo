@@ -31,7 +31,7 @@ endif::[]
 This article shows you how to build a simple blog application with https://www.jhipster.tech/2021/04/02/jhipster-release-7.0.1.html[JHipster 7.0.1].
 
 ifdef::env-github[]
-TIP: It appears you're reading this document on GitHub. If you want a prettier view, install https://chrome.google.com/webstore/detail/asciidoctorjs-live-previe/iaalpfgpbocpdfblpnhhgllgbdbchmia[Asciidoctor.js Live Preview for Chrome], then view the https://raw.githubusercontent.com/mraible/jhipster7-demo/main/README.adoc?toc=left[raw document].
+TIP: It appears you're reading this document on GitHub. If you want a prettier view, install https://chrome.google.com/webstore/detail/asciidoctorjs-live-previe/iaalpfgpbocpdfblpnhhgllgbdbchmia[Asciidoctor.js Live Preview for Chrome], then view the https://raw.githubusercontent.com/mraible/jhipster7-demo/main/README.adoc[raw document].
 endif::[]
 
 .Source Code
@@ -41,7 +41,7 @@ If you'd like to get right to it, the https://github.com/mraible/jhipster7-demo[
 
 == What is JHipster?
 
-JHipster is one of those open-source projects you stumble upon and immediately think, "`Of course!`" It combines three very successful frameworks in web development: Bootstrap, Angular, and Spring Boot. Bootstrap was one of the first dominant web-component frameworks. Its most substantial appeal was that it only required a bit of HTML and it worked! All the efforts we made in the Java community to develop web components were shown a better path by Bootstrap. It leveled the playing field in HTML/CSS development, much like Apple's Human Interface Guidelines did for iOS apps.
+JHipster is one of those open-source projects you stumble upon and immediately think, "`Of course!`" It combines three very successful frameworks in web development: Bootstrap, Angular, and Spring Boot. Bootstrap was one of the first dominant web-component frameworks. Its most substantial appeal was that it only required a bit of HTML, and it worked! All the efforts we made in the Java community to develop web components were shown a better path by Bootstrap. It leveled the playing field in HTML/CSS development, much like Apple's Human Interface Guidelines did for iOS apps.
 
 https://www.julien-dubois.com/[Julien Dubois] started JHipster in October 2013 (Julien's first commit was on https://github.com/jhipster/generator-jhipster/commit/c8630ab7af7b6a99db880b3b0e2403806b7d2436[October 21, 2013]). The first public release (version 0.3.1) launched on December 7, 2013. Since then, the project has had over 200 releases! It is an open-source, Apache 2.0-licensed project on GitHub. It has a core team of 38 developers and over 600 contributors. You can find its homepage at https://www.jhipster.tech/[www.jhipster.tech]. If you look at https://github.com/jhipster/generator-jhipster[the project on GitHub], you can see it's mostly written in JavaScript (52%), TypeScript (19.8%), and Java (17.7%).
 
@@ -53,7 +53,7 @@ The http://www.jhipster.tech/installation/[Installing JHipster] instructions sho
 
 . Install Java 11 https://sdkman.io/[using SDKMAN!]
 . Install Git from https://git-scm.com.
-. Install Node.js from http://nodejs.org. JHipster recommends using a LTS release.
+. Install Node.js from http://nodejs.org. JHipster recommends using an LTS release.
 . Run the following command to install JHipster.
 
     npm i -g generator-jhipster@7.0.1
@@ -62,12 +62,12 @@ NOTE: If you're using Yarn, run `yarn global add generator-jhipster@7.0.1`.
 
 == Create a Project
 
-To create a project, open a terminal window and create a directory. For example, `mkdir blog`. Navigate into the directory and run `jhipster`. You'll be prompted to answer a number of questions about the type of application you want to create and what features you'd like to include. The screenshot below shows the choices I made to create a simple blog application with Angular.
+To create a project, open a terminal window and create a directory. For example, `mkdir blog`. Navigate into the directory and run `jhipster`. You'll be prompted to answer several questions about the type of application you want to create and what features you'd like to include. The screenshot below shows the choices I made to create a simple blog application with Angular.
 
 .Generating the application
 image::static/generating-blog.png[Generating the application, 800, scaledwidth=100%]
 
-If you'd like to create the same application I did, you can place the following `.yo-rc.json` file in an empty directory and run `jhipster` in it. You won't be prompted to answer any questions because the answers are provided by this file.
+If you'd like to create the same application I did, you can place the following `.yo-rc.json` file in an empty directory and run `jhipster` in it. You won't be prompted to answer any questions because this file provides the answers.
 
 [source,json]
 ----
@@ -129,7 +129,7 @@ Run `./mvnw` to start the application and navigate to http://localhost:8080 in y
 .Default homepage
 image::static/default-homepage.png[Default homepage, 800, scaledwidth=100%]
 
-Sign in with username `admin` and password `admin`, and you'll have access to navigate through the **Administration** section. This section offers nice looking UIs on top of some Spring Boot's many monitoring and configuration features. It also allows you to administer users:
+Sign in with username `admin` and password `admin`, and you'll have access to navigate through the **Administration** section. This section offers nice-looking UIs on top of some Spring Boot's many monitoring and configuration features. It also allows you to administer users:
 
 .User management
 image::static/user-management.png[User management, 800, scaledwidth=100%]
@@ -155,7 +155,7 @@ npm run e2e
 For each entity you want to create, you will need:
 
 * a database table;
-* a Liquibase change set;
+* a Liquibase changeset;
 * a JPA entity class;
 * a Spring Data `JpaRepository` interface;
 * a Spring MVC `RestController` class;
@@ -164,9 +164,9 @@ For each entity you want to create, you will need:
 
 Also, you should have integration tests to verify that everything works and performance tests to confirm that it runs fast. In an ideal world, you'd also have unit tests and integration tests for your Angular code.
 
-The good news is JHipster can generate all of this code for you, including integration tests and performance tests. Also, if you have entities with relationships, it will create the necessary schema to support them (with foreign keys), and the TypeScript and HTML code to manage them. You can also set up validation to require certain fields as well as control their length.
+The good news is JHipster can generate all of this code for you, including integration tests and performance tests. If you have entities with relationships, it will create the necessary schema to support them (with foreign keys), and the TypeScript and HTML code to manage them. You can also set up validation to require certain fields as well as control their length.
 
-JHipster supports several methods of code generation. The first uses its https://www.jhipster.tech/creating-an-entity/[entity sub-generator]. The entity sub-generator is a command-line tool that prompts you with questions which you answer.
+JHipster supports several methods of code generation. The first uses its https://www.jhipster.tech/creating-an-entity/[entity sub-generator]. The entity sub-generator is a command-line tool that prompts you with questions that you answer.
 
 https://start.jhipster.tech/jdl-studio/[JDL-Studio] is a browser-based tool for defining your domain model with JHipster Domain Language (JDL). I like the visual nature of JDL-Studio, so I'll use it for this project.
 
@@ -219,7 +219,7 @@ You'll be prompted to overwrite `src/main/webapp/i18n/en/global.json`. Type **a*
 
 Restart the application with `/.mvnw`.
 
-You might notice that each entities' list screen is pre-loaded with data. This is done by https://github.com/marak/Faker.js/[faker.js]. To turn it off, edit `src/main/resources/config/application-dev.yml`, search for `faker` and remove it from the `liquibase.contexts` configuration. I made this change in this example's code.
+You might notice that each entities' list screen is pre-loaded with data. https://github.com/marak/Faker.js/[faker.js] creates this data. To turn it off, edit `src/main/resources/config/application-dev.yml`, search for `faker` and remove it from the `liquibase.contexts` configuration. I made this change in this example's code.
 
 [source,yaml]
 ----
@@ -230,7 +230,7 @@ liquibase:
 
 TIP: If you still have data in your list screens after making this change, run `./mvnw clean` to delete the H2 database.
 
-Create a couple of blogs for the existing `admin` and `user` users, as well as a few blog entries.
+Create a couple of blogs for the existing `admin` and `user` users and a few blog entries.
 
 .Blogs
 image::static/blogs.png[Blogs, 800, scaledwidth=100%]
@@ -238,7 +238,7 @@ image::static/blogs.png[Blogs, 800, scaledwidth=100%]
 .Entries
 image::static/posts.png[Posts, 800, scaledwidth=100%]
 
-From these screenshots, you can see that users can see each other's data, and modify it.
+From these screenshots, you can see that users can see each other's data and modify it.
 
 == Add Business Logic
 
@@ -450,7 +450,7 @@ image::static/blog-entries.png[Blog entries, 800, scaledwidth=100%]
 
 === Lock It Down!
 
-You can further enhance the security of your API by only allowing users that own a blog (or post) to edit it. Here's some sudo-code to show the logic:
+You can further enhance the security of your API by only allowing users that own a blog (or post) to edit it. Here's some pseudocode to show the logic:
 
 [source,java]
 ----
@@ -592,7 +592,7 @@ When you prepare a JHipster application for production, it's recommended to use 
 ./mvnw -Pprod verify
 ----
 
-The production profile is used to build an optimized JavaScript client. You can invoke this using webpack by running `yarn run webapp:prod`. The production profile also configures gzip compression with a servlet filter, cache headers, and monitoring via https://micrometer.io/[Micrometer]. If you have a http://graphite.wikidot.com/[Graphite] server configured in  your `application-prod.yml` file, your application will automatically send metrics data to it.
+The production profile is used to build an optimized JavaScript client. You can invoke this using webpack by running `yarn run webapp:prod`. The production profile also configures gzip compression with a servlet filter, cache headers, and monitoring via https://micrometer.io/[Micrometer]. If you have a http://graphite.wikidot.com/[Graphite] server configured in your `application-prod.yml` file, your application will automatically send metrics data to it.
 
 To deploy this application to Heroku, I logged in to my account using `heroku login` from the command line. I already had the https://devcenter.heroku.com/articles/heroku-cli[Heroku CLI] installed.
 
@@ -672,7 +672,7 @@ Sponsored with ❤️ by @oktadev.
 Execution time: 7 min. 37 s.
 ----
 
-I ran `heroku open`, logged as `admin` and was pleased to see it worked!
+I ran `heroku open`, logged as `admin`, and was pleased to see it worked!
 
 .JHipster 7 Demo on Heroku
 image::static/jhipster7-demo-heroku.png[JHipster 7 Demo on Heroku, 800, scaledwidth=100%]
@@ -696,7 +696,7 @@ TIP: Developing microservices with JHipster is possible too! See https://develop
 
 == Learn More about JHipster
 
-To learn more about JHipster and all it has to offer, look no further than https://www.amazon.com/Full-Stack-Development-JHipster-microservices-ebook/dp/B083XLGV98[Full Stack Development with JHipster] by https://twitter.com/deepu105[Deepu K Sasidharan] and https://twitter.com/sendilkumarn[Sendil Kumar]. Both Deepu and Sendil have contributed an incredible amount of time and code to JHipster. We've very luck to have them. They're both amazing developers! ❤️
+To learn more about JHipster and all it has to offer, look no further than https://www.amazon.com/Full-Stack-Development-JHipster-microservices-ebook/dp/B083XLGV98[Full Stack Development with JHipster] by https://twitter.com/deepu105[Deepu K Sasidharan] and https://twitter.com/sendilkumarn[Sendil Kumar]. Both Deepu and Sendil have contributed an incredible amount of time and code to JHipster. We've very lucky to have them. They're both amazing developers! ❤️
 
 Follow https://twitter.com/jhipster[@jhipster] on Twitter for release announcements, articles, new features, and upcoming talks.
 
