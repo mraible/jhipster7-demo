@@ -1,0 +1,52 @@
+<div>
+  <h2 id="page-heading" data-cy="PostHeading">
+    <span jhiTranslate="blogApp.post.home.title">Posts</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="reset()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="blogApp.post.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-post"
+        [routerLink]="['/post/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="blogApp.post.home.createLabel"> Create a new Post </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="posts?.length === 0">
+    <span jhiTranslate="blogApp.post.home.notFound">No posts found</span>
+  </div>
+
+  <div class="table-responsive" *ngIf="posts && posts.length > 0">
+    <div infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+      <div *ngFor="let post of posts; trackBy: trackId" data-cy="entityTable">
+        <a [routerLink]="['/post', post.id, 'view']" data-cy="entityDetailsButton">
+          <h2>{{ post.title }}</h2>
+        </a>
+        <small>Posted on {{ post.date | formatMediumDatetime }} by {{ post.blog?.user?.login }}</small>
+        <div [innerHTML]="post.content"></div>
+        <div class="btn-group mb-2 mt-1">
+          <button type="submit" [routerLink]="['/post', post.id, 'edit']" class="btn btn-primary btn-sm">
+            <fa-icon icon="pencil-alt"></fa-icon>
+            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit" data-cy="entityEditButton">Edit</span>
+          </button>
+          <button type="submit" (click)="delete(post)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+            <fa-icon icon="times"></fa-icon>
+            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

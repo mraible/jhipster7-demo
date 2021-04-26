@@ -1,0 +1,26 @@
+{
+  "blogApp": {
+    "blog": {
+      "home": {
+        "title": "Blogs",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Blog",
+        "createOrEditLabel": "Crear o editar Blog",
+        "notFound": "Ningún Blogs encontrado"
+      },
+      "created": "Un nuevo Blog ha sido creado con el identificador {{ param }}",
+      "updated": "Un Blog ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Blog ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Blog {{ id }}?"
+      },
+      "detail": {
+        "title": "Blog"
+      },
+      "id": "ID",
+      "name": "Name",
+      "handle": "Handle",
+      "user": "User"
+    }
+  }
+}

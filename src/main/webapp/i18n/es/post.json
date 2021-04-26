@@ -1,0 +1,28 @@
+{
+  "blogApp": {
+    "post": {
+      "home": {
+        "title": "Posts",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Post",
+        "createOrEditLabel": "Crear o editar Post",
+        "notFound": "Ningún Posts encontrado"
+      },
+      "created": "Un nuevo Post ha sido creado con el identificador {{ param }}",
+      "updated": "Un Post ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Post ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Post {{ id }}?"
+      },
+      "detail": {
+        "title": "Post"
+      },
+      "id": "ID",
+      "title": "Title",
+      "content": "Content",
+      "date": "Date",
+      "blog": "Blog",
+      "tag": "Tag"
+    }
+  }
+}
