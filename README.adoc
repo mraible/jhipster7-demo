@@ -696,13 +696,35 @@ TIP: Developing microservices with JHipster is possible too! See https://develop
 
 == Learn More about JHipster
 
-To learn more about JHipster and all it has to offer, look no further than https://www.amazon.com/Stack-Development-JHipster-Deepu-Sasidharan/dp/178847631X[Full Stack Development with JHipster] by https://twitter.com/deepu105[Deepu K Sasidharan] and https://twitter.com/sendilkumarn[Sendil Kumar]. Both Deepu and Sendil have contributed an incredible amount of time and code to JHipster. We've very luck to have them. They're both amazing developers! ❤️
+To learn more about JHipster and all it has to offer, look no further than https://www.amazon.com/Full-Stack-Development-JHipster-microservices-ebook/dp/B083XLGV98[Full Stack Development with JHipster] by https://twitter.com/deepu105[Deepu K Sasidharan] and https://twitter.com/sendilkumarn[Sendil Kumar]. Both Deepu and Sendil have contributed an incredible amount of time and code to JHipster. We've very luck to have them. They're both amazing developers! ❤️
 
 Follow https://twitter.com/jhipster[@jhipster] on Twitter for release announcements, articles, new features, and upcoming talks.
 
 == Source Code
 
 The source code for this project is available on GitHub at https://github.com/mraible/jhipster7-demo[mraible/jhipster7-demo].
+
+https://github.com/features/actions[GitHub Actions] is continually testing this project with configuration from its https://github.com/mraible/jhipster7-demo/blob/main/.github/workflows/github-actions.yml[`.github/workflows/github-actions.yml`] file. This file was generated using `jhipster ci-cd` and everything https://github.com/mraible/jhipster7-demo/pull/1[passed on the first try]!
+
+It's a good idea to keep your dependencies up-to-date for security reasons. I recommend using https://dependabot.com/[Dependabot] and adding a `.github/dependabot.yml` file with the following YAML:
+
+[source,yaml]
+----
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+----
 
 == About the Author
 
