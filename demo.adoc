@@ -1,0 +1,88 @@
+== JHipster 7 Demo Steps
+
+The brackets at the end of each step indicate the alias's or IntelliJ Live Templates to use. You can find the template definitions at https://github.com/mraible/idea-live-templates[mraible/idea-live-templates].
+
+=== Create JHipster Project
+
+. Create a `blog` directory and create a JHipster app in it
+
+  applicationType: monolith
+  name: blog
+  package: org.jhipster.blog
+  authenticationType: JWT
+  prodDatabaseType: PostgreSQL
+  languages: en,es
+  testFrameworks: Cypress
+
+. Start app using `./mvnw`, browse through admin features
+
+. Confirm everything works by running Cypress
+
+=== Generate Entities
+
+. Import Blog JDL from https://start.jhipster.tech[start.jhipster.tech]
+
+  jhipster jdl blog.jdl
+
+. Restart application and show pre-loaded data
+
+. Turn off faker in `application-dev.yml` and `rm -rf target/h2db`
+
+. Create a couple of blogs and entries for `admin` and `user`
+
+. Show how `admin` and `user` share data
+
+=== Add Business Logic
+
+. Edit `BlogResource.java` and change `getAllBlogs()` method
+
+  return blogRepository.findByUserIsCurrentUser()
+
+. Show how blog list screen limits data to current user
+
+. Edit `PostResource.java` and change `getAllPosts()` [`jh-findBy`]
+
+  page = postRepository.findByBlogUserLoginOrderByDateDesc(SecurityUtils.getCurrentUserLogin().orElse(null), pageable);
+
+. Using your IDE, create this method in `PostRepository`
+
+. Recompile both classes and verify entries are limited to current user
+
+=== Make UI Enhancements
+
+. Allow HTML in entries with `[innerHTML]="post.content"`
+
+. Improve entry layout to look like a blog [`jh-posts`]
+
+=== Lock it down!
+
+. Add logic to `BlogResource#getBlog` to make sure user owns blog [`jh-get`]
+
+=== Deploy to the Cloud
+
+. Build for production
+
+  ./mvnw -Pprod verify
+
+. Fix test failures by setting a `User` on a blog by default
+
+  @Autowired
+  private UserRepository userRepository;
+
+  public Blog createEntity(EntityManager em) {
+      Blog blog = new Blog()
+              .name(DEFAULT_NAME)
+              .handle(DEFAULT_HANDLE)
+              .user(userRepository.findOneByLogin("user").get());
+      return blog;
+  }
+
+. Run build again
+
+. Login to Heroku using `heroku login`
+
+. Run `jhipster heroku`
+
+. When process completes, run `heroku open`
+
+. Fini!
