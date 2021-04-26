@@ -3,7 +3,7 @@
   "version": "0.0.1-SNAPSHOT",
   "private": true,
   "description": "Description for blog",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "scripts": {
     "prettier:check": "prettier --check \"{,src/**/,webpack/}*.{md,json,yml,html,js,ts,tsx,css,scss,java}\"",
     "prettier:format": "prettier --write \"{,src/**/,webpack/}*.{md,json,yml,html,js,ts,tsx,css,scss,java}\"",
