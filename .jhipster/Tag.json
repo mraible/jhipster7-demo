@@ -13,7 +13,7 @@
       "relationshipType": "many-to-many",
       "otherEntityName": "post",
       "otherEntityRelationshipName": "tag",
-      "relationshipName": "entry",
+      "relationshipName": "post",
       "ownerSide": false
     }
   ],

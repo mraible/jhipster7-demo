@@ -29,7 +29,7 @@
     {
       "relationshipType": "many-to-many",
       "otherEntityName": "tag",
-      "otherEntityRelationshipName": "entry",
+      "otherEntityRelationshipName": "post",
       "relationshipName": "tag",
       "otherEntityField": "name",
       "ownerSide": true
