@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import org.jhipster.blog.IntegrationTest;
 import org.jhipster.blog.domain.Blog;
 import org.jhipster.blog.repository.BlogRepository;
+import org.jhipster.blog.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,9 @@ class BlogResourceIT {
     private EntityManager em;
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private MockMvc restBlogMockMvc;
 
     private Blog blog;
@@ -58,8 +62,8 @@ class BlogResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Blog createEntity(EntityManager em) {
-        Blog blog = new Blog().name(DEFAULT_NAME).handle(DEFAULT_HANDLE);
+    public Blog createEntity(EntityManager em) {
+        Blog blog = new Blog().name(DEFAULT_NAME).handle(DEFAULT_HANDLE).user(userRepository.findOneByLogin("user").get());
         return blog;
     }
 

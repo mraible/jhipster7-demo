@@ -14,8 +14,11 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 import javax.persistence.EntityManager;
 import org.jhipster.blog.IntegrationTest;
+import org.jhipster.blog.domain.Blog;
 import org.jhipster.blog.domain.Post;
+import org.jhipster.blog.repository.BlogRepository;
 import org.jhipster.blog.repository.PostRepository;
+import org.jhipster.blog.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,12 +27,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Base64Utils;
 
 /**
  * Integration tests for the {@link PostResource} REST controller.
@@ -63,6 +64,12 @@ class PostResourceIT {
 
     @Autowired
     private EntityManager em;
+
+    @Autowired
+    private BlogRepository blogRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private MockMvc restPostMockMvc;
@@ -170,6 +177,9 @@ class PostResourceIT {
     @Transactional
     void getAllPosts() throws Exception {
         // Initialize the database
+        Blog blog = new Blog().name("test").handle("test").user(userRepository.findOneByLogin("user").get());
+        blogRepository.saveAndFlush(blog);
+        post.setBlog(blog);
         postRepository.saveAndFlush(post);
 
         // Get all the postList
