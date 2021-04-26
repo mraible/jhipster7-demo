@@ -43,6 +43,9 @@
     "clientThemeVariant": "",
     "languages": ["en", "es"],
     "entities": ["Blog", "Post", "Tag"],
-    "lastLiquibaseTimestamp": 1619453187000
+    "lastLiquibaseTimestamp": 1619453187000,
+    "herokuAppName": "jhipster-7-demo",
+    "herokuDeployType": "git",
+    "herokuJavaVersion": "11"
   }
 }
