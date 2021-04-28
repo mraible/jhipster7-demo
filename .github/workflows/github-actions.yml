@@ -32,7 +32,7 @@ jobs:
               run: npm run java:jar:prod
             - name: Deploy to Heroku
               if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-            - uses: akhileshns/heroku-deploy@v3.12.12
+              uses: akhileshns/heroku-deploy@v3.12.12
               with:
                   heroku_api_key: ${{secrets.HEROKU_API_KEY}}
                   heroku_app_name: "jhipster-7-demo"
