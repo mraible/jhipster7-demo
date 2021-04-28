@@ -32,14 +32,11 @@ jobs:
               run: npm run java:jar:prod
             - name: Deploy to Heroku
               if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-              env:
-                  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-              run: |
-                  if [ ! -z "$HEROKU_API_KEY" ]; then
-                      ./mvnw -ntp com.heroku.sdk:heroku-maven-plugin:2.0.5:deploy -DskipTests -Pprod -Dheroku.buildpacks=heroku/jvm -Dheroku.appName=jhipster-7-demo
-                  else
-                      echo No HEROKU_API_KEY, skipping...
-                  fi
+            - uses: akhileshns/heroku-deploy@v3.12.12
+              with:
+                  heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+                  heroku_app_name: "jhipster-7-demo"
+                  heroku_email: "matt@raibledesigns.com"
             - name: 'E2E: Package'
               run: npm run ci:e2e:package
             - name: 'E2E: Prepare'
@@ -47,8 +44,8 @@ jobs:
             - name: 'E2E: Run'
               run: npm run ci:e2e:run
               env:
-                CYPRESS_ENABLE_RECORD: false
-                CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
-                CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+                  CYPRESS_ENABLE_RECORD: false
+                  CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+                  CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
             - name: 'E2E: Teardown'
               run: npm run ci:e2e:teardown
