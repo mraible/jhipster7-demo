@@ -683,7 +683,7 @@ The source code for this project is available on GitHub at https://github.com/mr
 
 https://github.com/features/actions[GitHub Actions] is continually testing this project with configuration from its https://github.com/mraible/jhipster7-demo/blob/main/.github/workflows/github-actions.yml[`.github/workflows/github-actions.yml`] file. This file was generated using `jhipster ci-cd` and everything https://github.com/mraible/jhipster7-demo/pull/1[passed on the first try]!
 
-You can also add continuous delivery with Heroku. I ran `jhipster ci-cd` again to add this feature. See https://github.com/mraible/jhipster7-demo/pull/2[pull request #2] to see the diff in `github-actions.yml`. To make this work, I had to copy my Heroku API key from my https://dashboard.heroku.com/account[account dashboard]. Then, I added it in GitHub > **Settings** > **Secrets**, naming it `HEROKU_API_KEY`.
+You can also add continuous delivery with GitHub Actions and Heroku. I ran `jhipster ci-cd` again to add this feature. See https://github.com/mraible/jhipster7-demo/pull/2[pull request #2] to see the diff in `github-actions.yml`. To make this work, I had to copy my Heroku API key from my https://dashboard.heroku.com/account[account dashboard]. Then, I added it in GitHub > **Settings** > **Secrets**, naming it `HEROKU_API_KEY`.
 
 It's a good idea to keep your dependencies up-to-date for security reasons. I recommend using https://dependabot.com/[Dependabot] and adding a `.github/dependabot.yml` file with the following YAML:
 
