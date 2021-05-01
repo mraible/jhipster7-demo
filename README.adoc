@@ -677,6 +677,34 @@ I ran `heroku open`, logged as `admin`, and was pleased to see it worked!
 .JHipster 7 Demo on Heroku
 image::static/jhipster7-demo-heroku.png[JHipster 7 Demo on Heroku, 800, scaledwidth=100%]
 
+== Source Code, CI, and CD
+
+The source code for this project is available on GitHub at https://github.com/mraible/jhipster7-demo[mraible/jhipster7-demo].
+
+https://github.com/features/actions[GitHub Actions] is continually testing this project with configuration from its https://github.com/mraible/jhipster7-demo/blob/main/.github/workflows/github-actions.yml[`.github/workflows/github-actions.yml`] file. This file was generated using `jhipster ci-cd` and everything https://github.com/mraible/jhipster7-demo/pull/1[passed on the first try]!
+
+You can also add continuous delivery with GitHub Actions and Heroku. I ran `jhipster ci-cd` again to add this feature. See https://github.com/mraible/jhipster7-demo/pull/2[pull request #2] to see the diff in `github-actions.yml`. To make this work, I had to copy my Heroku API key from my https://dashboard.heroku.com/account[account dashboard]. Then, I added it in GitHub > **Settings** > **Secrets**, naming it `HEROKU_API_KEY`.
+
+It's a good idea to keep your dependencies up-to-date for security reasons. I recommend using https://dependabot.com/[Dependabot] and adding a `.github/dependabot.yml` file with the following YAML:
+
+[source,yaml]
+----
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+----
+
 == JHipster: Full Stack Platform for the Modern Developer
 
 I hope you've enjoyed learning how JHipster can help you develop modern web applications! It's a nifty project, with an easy-to-use entity generator, a pretty UI, and many Spring Boot best-practice patterns. The project team follows six simple https://www.jhipster.tech/policies/[policies], paraphrased here:
@@ -699,32 +727,6 @@ TIP: Developing microservices with JHipster is possible too! See https://develop
 To learn more about JHipster and all it has to offer, look no further than https://www.amazon.com/Full-Stack-Development-JHipster-microservices-ebook/dp/B083XLGV98[Full Stack Development with JHipster] by https://twitter.com/deepu105[Deepu K Sasidharan] and https://twitter.com/sendilkumarn[Sendil Kumar]. Both Deepu and Sendil have contributed an incredible amount of time and code to JHipster. We've very lucky to have them. They're both amazing developers! ❤️
 
 Follow https://twitter.com/jhipster[@jhipster] on Twitter for release announcements, articles, new features, and upcoming talks.
-
-== Source Code
-
-The source code for this project is available on GitHub at https://github.com/mraible/jhipster7-demo[mraible/jhipster7-demo].
-
-https://github.com/features/actions[GitHub Actions] is continually testing this project with configuration from its https://github.com/mraible/jhipster7-demo/blob/main/.github/workflows/github-actions.yml[`.github/workflows/github-actions.yml`] file. This file was generated using `jhipster ci-cd` and everything https://github.com/mraible/jhipster7-demo/pull/1[passed on the first try]!
-
-It's a good idea to keep your dependencies up-to-date for security reasons. I recommend using https://dependabot.com/[Dependabot] and adding a `.github/dependabot.yml` file with the following YAML:
-
-[source,yaml]
-----
-version: 2
-updates:
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: "maven"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-----
 
 == About the Author
 
