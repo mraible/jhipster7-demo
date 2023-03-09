@@ -414,32 +414,26 @@ To make the list of entries look like a blog, replace `<div class="table-respons
 [source,html]
 .src/main/webapp/app/entities/post/list/post.component.html
 ----
-<div class="table-responsive" *ngIf="entries?.length > 0">
-    <div infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
-        <div *ngFor="let entry of entries; trackBy: trackId">
-            <a [routerLink]="['/entry', entry.id, 'view' ]">
-                <h2>{{entry.title}}</h2>
-            </a>
-            <small>Posted on {{entry.date | date: 'short'}} by {{entry.blog.user.firstName}}</small>
-            <div [innerHTML]="entry.content"></div>
-            <div class="btn-group mb-2 mt-1">
-                <button type="submit"
-                        [routerLink]="['/entry', entry.id, 'edit']"
-                        class="btn btn-primary btn-sm">
-                    <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                </button>
-                <button type="submit"
-                        [routerLink]="['/', 'entry', { outlets: { popup: entry.id + '/delete'} }]"
-                        replaceUrl="true"
-                        queryParamsHandling="merge"
-                        class="btn btn-danger btn-sm">
-                    <fa-icon [icon]="'times'"></fa-icon>
-                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                </button>
-            </div>
-        </div>
+<div class="table-responsive" *ngIf="posts && posts.length > 0">
+  <div infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+    <div *ngFor="let post of posts; trackBy: trackId" data-cy="entityTable">
+      <a [routerLink]="['/post', post.id, 'view']" data-cy="entityDetailsButton">
+        <h2>{{ post.title }}</h2>
+      </a>
+      <small>Posted on {{ post.date | formatMediumDatetime }} by {{ post.blog?.user?.login }}</small>
+      <div [innerHTML]="post.content"></div>
+      <div class="btn-group mb-2 mt-1">
+        <button type="submit" [routerLink]="['/post', post.id, 'edit']" class="btn btn-primary btn-sm">
+          <fa-icon icon="pencil-alt"></fa-icon>
+          <span class="d-none d-md-inline" jhiTranslate="entity.action.edit" data-cy="entityEditButton">Edit</span>
+        </button>
+        <button type="submit" (click)="delete(post)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+          <fa-icon icon="times"></fa-icon>
+          <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+        </button>
+      </div>
     </div>
+  </div>
 </div>
 ----
 
