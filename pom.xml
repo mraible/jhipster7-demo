@@ -692,8 +692,8 @@
                                 <version>[${maven.version},)</version>
                             </requireMavenVersion>
                             <requireJavaVersion>
-                                <message>You are running an incompatible version of Java. JHipster supports JDK 8 to 15.</message>
-                                <version>[1.8,16)</version>
+                                <message>You are running an incompatible version of Java. JHipster supports JDK 8 to 18.</message>
+                                <version>[1.8,19)</version>
                             </requireJavaVersion>
                         </rules>
                     </configuration>
@@ -899,7 +899,7 @@
             <dependencies>
                 <dependency>
                     <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-undertow</artifactId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
                 </dependency>
                 <dependency>
                     <groupId>org.springframework.boot</groupId>
@@ -921,7 +921,7 @@
             <dependencies>
                 <dependency>
                     <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-undertow</artifactId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
                 </dependency>
             </dependencies>
             <build>
@@ -1050,7 +1050,7 @@
                 <!-- The following dependency is added due to issue #9175-->
                 <dependency>
                     <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-undertow</artifactId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
                 </dependency>
             </dependencies>
             <build>
